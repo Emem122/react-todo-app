@@ -1,6 +1,6 @@
 import React from "react";
 
-export const TodoList = ({ data, handleComplete, handleDelete }) => {
+export const TodoList = ({ data, handleComplete, handleDelete, handleEdit }) => {
 	const uncompletedTodo = data.filter((item) => !item.isDone);
 	const completedTodo = data.filter((item) => item.isDone);
 
@@ -12,7 +12,9 @@ export const TodoList = ({ data, handleComplete, handleDelete }) => {
 					return (
 						<li key={item.id}>
 							{item.text}
+              {item.isEditting? "true":"false"}
 							<button onClick={() => handleComplete(item.id)}>Done</button>
+							<button onClick={() => handleEdit(item.id)}>Edit</button>
 							<button onClick={() => handleDelete(item.id)}>Delete</button>
 						</li>
 					);
@@ -24,7 +26,9 @@ export const TodoList = ({ data, handleComplete, handleDelete }) => {
 					return (
 						<li key={item.id}>
 							{item.text}
+              {item.isEditting? "true":"false"}
 							<button onClick={() => handleComplete(item.id)}>Undo</button>
+							<button onClick={() => handleEdit(item.id)}>Edit</button>
 							<button onClick={() => handleDelete(item.id)}>Delete</button>
 						</li>
 					);
