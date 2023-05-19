@@ -49,17 +49,25 @@ function App() {
   };
 
   const handleEdit = (id) => {
-    // setIsEdit(!isEdit);
+    if (isEdit) {
+      const newData = data.map((item) => {
+        return { ...item, isEditting: false };
+      });
+      setData(newData);
+      setInput("");
+      setIsEdit(false);
+    } else {
       const newData = data.map((item) => {
         if (item.id === id) {
           setInput(item.text);
-          setIsEdit(true)
+          setIsEdit(true);
           return { ...item, isEditting: true };
         } else {
           return { ...item, isEditting: false };
         }
       });
       setData(newData);
+    }
   };
 
   return (
